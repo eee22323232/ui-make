@@ -1,6 +1,6 @@
 ---
 name: ui-make
-description: Design, build, redesign, or refine software UI for Web, desktop, and mobile. Use for requests such as ui-make, 我要做一个 UI, 做个界面, 界面改版, or a concrete change to an app screen, component, layout, or interaction. Turn developer intent into a focused code example when a design decision needs feedback, then implement and verify in the existing stack.
+description: Design, prototype, build, or refine Web, desktop, and mobile app UI. Use when explicitly invoked as ui-make or when asked to make or change a screen, component, layout, or interaction, such as 我要做一个 UI or 把侧栏收窄一点. Answer explanation-only questions about existing components or implementation directly.
 ---
 
 # 软件 UI 开发
@@ -10,6 +10,8 @@ description: Design, build, redesign, or refine software UI for Web, desktop, an
 从真实入口找到目标页面、窗口或组件，了解它的用户任务、相邻区域和调用方。检查已有截图、设计稿、组件库、设计变量和同类界面。新项目根据需求识别首要任务和目标平台。把含糊描述落到能看到或操作的细节，例如哪些信息先看见、哪些操作常驻、默认展示什么以及操作后的反馈。
 
 让布局适合区域的用途。设置页按任务分组并给出保存反馈。工作列表和工具面板优先给数据与常用操作留空间。对话框聚焦当前决定，提供清楚的退出方式并处理焦点。现有界面改版时，先记录相同用户任务在旧版的截图或操作结果，作为复测基线。
+
+现有界面只改外观时，从真实入口确认并记录受影响的原有行为。按范围记录项目顺序、默认选择、保存和重新打开后的数据、返回或取消去向，以及依赖这些行为的调用方。把相关行为写进验收条件并沿用其状态、事件和路由。一个局部样式调整，只复测它可能影响的任务。
 
 ## 调查指定风格
 
@@ -22,7 +24,9 @@ description: Design, build, redesign, or refine software UI for Web, desktop, an
 - **直接实现**明确的局部改动，例如字号、间距或对齐。次要且可逆的细节沿用项目惯例，采用必要假设时在交付里说明。开发者已确认方向或明确要求直接实现时，按其指示执行。
 - **先发样例并等反馈**适用于尚未对齐的新页面或显著改版，也适用于会改变信息排序、默认状态、主操作位置、主要任务路径或共享组件使用方式的未决选择。局部改动涉及同样的未决选择时，也先确认。提问期间可以继续完成基线记录等独立工作。
 
-1. 用一两句说清对当前区域和用户任务的理解。给出一段能体现未决选择的最小组件代码，优先用项目语言、现有组件和设计变量。有条件就附独立的可运行预览及打开方式。
+1. 用一两句说清对当前区域和用户任务的理解。给出能体现未决选择的最小组件代码，优先用项目语言、现有组件和设计变量。有条件就附独立的可运行预览及打开方式。
+
+   若「更高级」「更像专业工具」这类描述仍有多种合理解释，用同一份内容、状态和尺寸做两个小样，只改变一个最影响观感的设计因素。例如在同一个面板上比较用留白分组和用细分隔线分组。展示两份短代码或共同组件的差异，并在可运行时用同条件预览对照。
 2. 针对会改变实现的选择问一个具体问题。例如「要把未开启的通知置顶，还是保留原顺序并只强调状态？」
 3. 收到反馈后，先在回复中给出对应的修订片段，条件允许时同步更新预览。把反馈写成可观察的验收条件。方向已定时，同一轮落实到实际入口和生产组件。若反馈带来新的关键选择，只确认该选择。
 
@@ -57,7 +61,9 @@ description: Design, build, redesign, or refine software UI for Web, desktop, an
 
 实现前为本次改动写出可复测的验收条件，说明起始状态、用户要做什么和预期结果。例如「保留三条通知原顺序，未勾选项显示‘未开启’，切换后状态文字与勾选同步，窄窗口仍能找到保存按钮」。检查受改动影响的状态与入口。
 
-完成后从真实入口执行任务。改版用同一份数据、初始状态、窗口尺寸和主题做前后对照。首次开发按验收条件检查。视觉差异用同条件截图或具体布局变化举证。交互变化至少实测一次对应动作并记录结果，例如「用键盘切换每周摘要后，状态文字更新为‘已开启’，项目顺序保持」。运行相关的构建、类型检查或测试，与界面实测分开报告。缺少旧版、运行环境或设备时，标明哪些判断仍无法验证。
+完成后从真实入口执行任务。改版用同一份数据、初始状态、窗口尺寸和主题做前后对照。首次开发按验收条件检查。视觉差异用同条件截图或具体布局变化举证。交互变化和可能受外观改动影响的原有行为都实际操作并记录结果。若原本支持保存后重新打开，实际保存一个不同的值，刷新或重开后确认它仍在。用测试数据执行有写入的操作。
+
+Web 预览受限时，尝试项目已有的端到端测试或可用的无头浏览器。把构建、类型检查和界面实测的结果分别报告。缺少旧版、运行环境或设备时，标明哪些判断仍无法验证。
 
 | 维度 | 观察点 |
 | --- | --- |
