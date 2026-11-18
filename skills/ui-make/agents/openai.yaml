@@ -1,0 +1,6 @@
+interface:
+  display_name: "软件 UI 开发"
+  short_description: "为 Web、桌面和移动端用短代码样例对齐设计，并验证界面改动"
+  default_prompt: "使用 $ui-make 帮我制作或优化一个界面，关键设计先用最小组件代码和我确认。"
+policy:
+  allow_implicit_invocation: true
