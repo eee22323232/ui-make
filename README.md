@@ -1,6 +1,6 @@
 # ui-make
 
-一个用于 Web、桌面软件和移动 App 的 Codex 技能。它把开发者的 UI 描述转成可反馈的组件样例，再沿用项目技术栈实现和验证。
+一个用于 Web、桌面软件和移动 App 的 Codex 技能。它把开发者的 UI 描述转成可反馈的组件样例，再沿用项目技术栈实现和验证；结合独立安装的 `ui-aesthetics` 提供视觉指导和实际截图评审。
 
 ## 安装
 
@@ -17,3 +17,29 @@
 如果某个方案会让界面明显更难读或更难用，技能会先说明具体影响和替代做法。了解取舍后，你仍可以确认按原效果实现。
 
 技能也会在需要时调查指定风格、核实图片和纹理的商用许可，或调用环境中已具备的相关工程技能。 [查看完整技能](skills/ui-make/SKILL.md) · [Skills for Real Engineers](https://github.com/mattpocock/skills#reference)
+
+## UI 审美评审
+
+制作、改版或打磨界面时，`ui-make` 会自动结合 [ui-aesthetics](https://github.com/kasonye/ui-aesthetics-skill) 的构图、层级、间距、字体、组件和状态规则。它以你已确认的风格、项目设计系统及平台习惯为准，完成后根据实际渲染截图指出问题、修正并复查。连续两轮没有明显改善时停止纯审美迭代；功能回归和未满足的验收条件仍继续修复。
+
+`ui-aesthetics` 需独立安装。将其规范入口 `SKILL.md`、`references/` 和 `agents/` 放入与你的 `ui-make` 同级的 `ui-aesthetics` 目录，安装后的布局为：
+
+```text
+<skills 目录>/
+├── ui-make/
+│   ├── SKILL.md
+│   ├── LICENSE
+│   └── agents/openai.yaml
+└── ui-aesthetics/
+    ├── SKILL.md
+    ├── references/
+    └── agents/openai.yaml
+```
+
+技能中的 `../ui-aesthetics/` 链接指向上述安装布局中的同级目录。未安装该技能时，`ui-make` 会说明缺失情况，并继续自身的设计和验证流程。
+
+本仓库仅包含 `ui-make`，第三方技能的内容和许可由各自上游维护。截至 2026-11-19，`ui-aesthetics` 上游未声明许可证；本项目的 MIT 许可证不授予其内容的额外使用或分发权。
+
+## 许可证
+
+`ui-make` 使用 [MIT 许可证](LICENSE)。技能目录内也附有许可证，便于单独安装和分发。独立调用的第三方技能及外部参考资料保留各自的许可状态。

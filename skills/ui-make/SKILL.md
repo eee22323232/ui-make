@@ -1,6 +1,7 @@
 ---
 name: ui-make
 description: Design, prototype, build, or refine Web, desktop, and mobile app UI. Use when explicitly invoked as ui-make or when asked to make or change a screen, component, layout, or interaction, such as 我要做一个 UI or 把侧栏收窄一点. Answer explanation-only questions about existing components or implementation directly.
+license: MIT
 ---
 
 # 软件 UI 开发
@@ -12,6 +13,14 @@ description: Design, prototype, build, or refine Web, desktop, and mobile app UI
 - **实现**。明确要求改项目，或直接提出目标和范围都清楚的局部改动时，在该范围内实现并验证。正在评审预览时，后续微调默认作用于预览，直到开发者要求应用到项目。授权范围有歧义时，先给只读建议或样例，围绕那一处确认。
 
 按当前请求及其上下文确定阶段与范围。开发者转入讨论或预览时，按新阶段行动。改实例页时，可检查共享样式和其他页面受影响的情况。把共享控件的改动限定在本次目标。确实需要改动其他入口的样式或行为时，先说明影响并确认扩展范围。开发者要求暂停时，停止写入和构建，说明已改的内容并等待。开发者纠正方向时，立即停止先前方案，按明确的新指示在当前授权范围内继续。
+
+## 默认结合 UI 审美技能
+
+制作、改版或打磨 UI 时，在形成视觉方案前读取同级的 [ui-aesthetics/SKILL.md](../ui-aesthetics/SKILL.md)，自动结合其构图、层级、间距、字体、组件与状态规则。只解释已有实现且不涉及视觉判断时，无需加载。技能暂不可用时说明这一点，并继续执行本技能的设计与验证流程。
+
+`ui-make` 负责当前阶段、实现范围和交互验收，`ui-aesthetics` 提供视觉指导。以开发者明确的风格、项目设计系统和平台规范为准；将其默认配色、全宽布局和动效建议按场景取舍。桌面和移动端采用可迁移的视觉原则，具体控件与交互沿用原生平台习惯。
+
+根据 `ui-aesthetics` 的路由按当前问题读取参考文件；视觉方向不清时读其 [设计原则](../ui-aesthetics/references/design-principles.md)，完成后按下文的截图复查要求审查，其余按配色、组件、状态、动效或深度问题选择，避免一次加载全部资料。
 
 ## 确定要做哪一部分
 
@@ -78,6 +87,8 @@ description: Design, prototype, build, or refine Web, desktop, and mobile app UI
 
 Web 预览受限时，尝试项目已有的端到端测试或可用的无头浏览器。把构建、类型检查和界面实测的结果分别报告。缺少旧版、运行环境或设备时，标明哪些判断仍无法验证。
 
+视觉复查结合 [ui-aesthetics 的评审规则](../ui-aesthetics/references/review-rubric.md)，基于实际渲染截图说明可见问题、对阅读或操作的影响及修正方向。局部调整只评受影响区域；截图之外的状态与动效通过实际操作验证。修正后重新渲染并复查，不能把预期改进当作已验证的结果。以验收条件和实际问题决定何时结束；连续两轮没有明显改善时停止纯审美迭代并说明取舍，功能回归和未满足的验收条件仍继续修复。
+
 | 维度 | 观察点 |
 | --- | --- |
 | 易辨性 | 内容层级、文字可读性、主操作能否找到、控件状态是否可区分，以及键盘焦点是否可见。 |
@@ -89,3 +100,7 @@ Web 预览受限时，尝试项目已有的端到端测试或可用的无头浏�
 ## 按需调用工程技能
 
 从当前可用技能中按问题选择。需要可操作的可丢弃样品来验证较大的设计选择时用 `prototype`。开发者要求逐层拷问时用 `grilling`。需要诊断可复现的 UI 故障时用 `diagnosing-bugs`。要求按规范和规格审查变更时用 `code-review`，仍按上节做视觉和操作验证。读取选中的 `SKILL.md`，沿用当前的实施授权和范围。技能不可用时按本流程继续。[Skills for Real Engineers](https://github.com/mattpocock/skills#reference)
+
+## 许可证
+
+`ui-make` 自身按 [MIT 许可证](LICENSE) 提供。独立调用的第三方技能与外部参考资料保留各自的许可状态；本许可证不覆盖它们，包括 `ui-aesthetics`。
